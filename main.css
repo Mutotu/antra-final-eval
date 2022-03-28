@@ -1,6 +1,8 @@
-* {
-  margin: 0;
+*,
+*::before,
+*::after {
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -12,36 +14,92 @@ body {
     rgb(40, 3, 126) 100%
   );
 }
+.header {
+  text-align: center;
+  position: sticky;
+  top: 0;
+
+  margin: 0;
+  padding: 10px;
+}
+.container {
+  margin-left: 150px;
+  margin-right: 150px;
+  background-color: white;
+  height: auto;
+}
 
 .header {
   background-color: rgb(15, 88, 88);
 }
 
-.header,
 .section-list,
 h3 {
   text-align: center;
 }
-
+h3 {
+  font-style: normal;
+}
 .section-list {
   display: flex;
-
-  gap: 10px;
-
-  row-gap: 10px;
-  column-gap: 20px;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 20px;
+  border-top: 1px green solid;
 }
 
 .artist-card {
-  display: flex;
-  flex-direction: column;
-
-  border: solid black 2px;
-  width: 25rem;
-  height: 22rem;
-  /* flex-shrink: 3; */
+  margin: 10px;
+  border: solid rgb(33, 27, 119) 2px;
+  width: 16rem;
+  height: 20rem;
+  background-color: antiquewhite;
 }
 
 img {
   height: 220px;
+}
+
+input {
+  width: 20rem;
+  height: 2rem;
+  border-radius: 18px;
+}
+
+.fa-search:before {
+  content: "\1F50D";
+}
+
+.error {
+  color: red;
+  margin-left: 23rem;
+}
+
+.loading {
+  margin: auto;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
