@@ -67,6 +67,7 @@ function generateCard(artist) {
 }
 
 function renderCardList(artists) {
+  unloader();
   return artists.results.map((artist) => {
     let generatedCard = generateCard(artist);
     insertIntoHtml(generatedCard);

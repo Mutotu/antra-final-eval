@@ -65,7 +65,10 @@ input {
   height: 2rem;
   border-radius: 18px;
 }
-
+button {
+  background-color: rgb(15, 88, 88);
+  border: none;
+}
 .fa-search:before {
   content: "\1F50D";
 }
