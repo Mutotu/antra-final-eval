@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(
+    90deg,
+    rgb(127, 7, 138) 0%,
+    rgba(33, 16, 65, 0.363) 50%,
+    rgb(40, 3, 126) 100%
+  );
+}
+
+.header {
+  background-color: rgb(15, 88, 88);
+}
+
+.header,
+.section-list,
+h3 {
+  text-align: center;
+}
+
+.section-list {
+  display: flex;
+
+  gap: 10px;
+
+  row-gap: 10px;
+  column-gap: 20px;
+}
+
+.artist-card {
+  display: flex;
+  flex-direction: column;
+
+  border: solid black 2px;
+  width: 25rem;
+  height: 22rem;
+  /* flex-shrink: 3; */
+}
+
+img {
+  height: 220px;
+}
