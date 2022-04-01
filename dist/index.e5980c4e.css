@@ -1,0 +1,115 @@
+*, :before, :after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(90deg, #7f078a 0%, #2110415d 50%, #28037e 100%);
+}
+
+.header {
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+}
+
+.container {
+  height: auto;
+  background-color: #fff;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.header {
+  background-color: #0f5858;
+}
+
+.section-list, h3 {
+  text-align: center;
+}
+
+h3 {
+  font-style: normal;
+}
+
+.section-list {
+  border-top: 1px solid green;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 20px;
+  display: flex;
+}
+
+.artist-card {
+  width: 16rem;
+  height: 20rem;
+  background-color: #faebd7;
+  border: 2px solid #211b77;
+  margin: 10px;
+}
+
+img {
+  height: 220px;
+}
+
+input {
+  width: 20rem;
+  height: 2rem;
+  border-radius: 18px;
+}
+
+button {
+  background-color: #0f5858;
+  border: none;
+}
+
+.fa-search:before {
+  content: "🔍";
+}
+
+.error {
+  color: red;
+  margin-left: 23rem;
+}
+
+.loading {
+  width: 120px;
+  height: 120px;
+  border: 16px solid #f3f3f3;
+  border-top-color: #3498db;
+  border-radius: 50%;
+  margin: auto;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.more {
+  width: 3rem;
+  height: 2rem;
+  background-color: wheat;
+  font-weight: bolder;
+}
+
+/*# sourceMappingURL=index.e5980c4e.css.map */

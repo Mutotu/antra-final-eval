@@ -1,0 +1,24 @@
+{
+  "name": "final-eval",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mutotu/antra-final-eval.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mutotu/antra-final-eval/issues"
+  },
+  "homepage": "https://github.com/Mutotu/antra-final-eval#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "parcel": "^2.4.1"
+  }
+}

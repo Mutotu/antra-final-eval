@@ -106,3 +106,10 @@ button {
     transform: rotate(360deg);
   }
 }
+
+.more {
+  width: 3rem;
+  height: 2rem;
+  background-color: wheat;
+  font-weight: bolder;
+}

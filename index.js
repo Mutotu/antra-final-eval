@@ -5,76 +5,67 @@ const h3 = document.querySelector("h3");
 let searched = "";
 const error = document.querySelector(".error");
 const loading = document.querySelector(".load");
+const more = document.querySelector(".more");
+let limit = 5;
+import axios from "axios";
 
-/////
-async function searchArtist(artist) {
-  const response = fetch(`https://itunes.apple.com/search?term=${artist}`)
-    .then((res) => res.json())
-    .then((json) => {
-      console.log(json);
-      renderCardList(json);
-      loader();
-    });
-}
+const searchArtist = (artist) => {
+  const data = axios.get(
+    `https://itunes.apple.com/search?term=${artist}&media=music&entity=album&attribute=artistTerm&limit=200`
+  );
+  data.then((res) => {
+    let sendData = res.data.results.slice(limit - 5, limit);
+    console.log(res.data.results.length);
+    h3.innerHTML = `${res.data.results.length} results for "${searched}"`;
+    get20(sendData);
+  });
+};
 
-function loader() {
-  loading.classList.add("loading");
-}
-function unloader() {
-  loading.classList.remove("loading");
-}
-
-function checkInput(value) {
-  if (value.length > 3) return true;
-}
-////change search bar
-//// modify the eventlisteners and error message
-search.addEventListener("keypress", (e) => {
-  if (e.keyCode === 13) {
-    // loader();
-    searched = search.value;
-    if (checkInput(search.value)) {
-      searchArtist(search.value);
-      error.innerHTML = null;
-      search.value = null;
-    } else {
-      console.log("wrongs");
-      error.innerHTML = "Please enter valid entry";
-    }
-  }
-});
 searchButton.addEventListener("click", () => {
+  removePrevSongs();
   if (checkInput(search.value)) {
-    // loader();
     searched = search.value;
     searchArtist(search.value);
     error.innerHTML = null;
     search.value = null;
   } else {
-    console.log("wrongs");
     error.innerHTML = "Please enter valid entry";
   }
 });
 
+function removePrevSongs() {
+  while (sectionList.firstChild) {
+    sectionList.removeChild(sectionList.firstChild);
+  }
+  limit = 5;
+}
+function checkInput(value) {
+  if (value.length > 3) return true;
+}
+
 function generateCard(artist) {
   return `<div class='artist-card' id='${artist.artistId}'>
-  
-  <img src=${artist.artworkUrl100} />
+
+   <img src=${artist.artworkUrl100} />
     <p>${artist.artistName} </p>
-    <p>${artist.trackName}</p>    
-  
+    <p>${artist.collectionName}</p>
+
   </div>`;
 }
 
-function renderCardList(artists) {
-  unloader();
-  return artists.results.map((artist) => {
-    let generatedCard = generateCard(artist);
+const get20 = (data) => {
+  data.map((art) => {
+    let generatedCard = generateCard(art);
     insertIntoHtml(generatedCard);
   });
-}
+};
 
 function insertIntoHtml(data) {
   sectionList.insertAdjacentHTML("afterbegin", data);
-  h3.innerHTML = `${data.length} results for "${searched}"`;
 }
+
+more.addEventListener("click", () => {
+  limit += 5;
+  searchArtist(searched);
+  console.log(limit);
+});
