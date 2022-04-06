@@ -11,20 +11,13 @@ class Jquery {
   html(val) {
     this.element.innerHTML = val;
   }
+  ajax(artist) {
+    return fetch(
+      `https://itunes.apple.com/search?term=${artist}&media=music&entity=album&attribute=artistTerm&limit=200`
+    ).then((res) => res.json());
+  }
 }
-
-// const $ = (selector) => {
-//   return new Jquery(selector);
-// };
-
-// $.ajax = () => {
-//   fetch(
-//     `https://itunes.apple.com/search?term=${metal}&media=music&entity=album&attribute=artistTerm&limit=200`
-//   ).then((res) => {
-//     return res.json().then((response) => console.log(response));
-//   });
-// };
-
+//////////////////////////////////////////////////////
 const search = new Jquery(".searchArtist");
 const searchButton = new Jquery(".search-button");
 const sectionList = document.querySelector(".section-list");
@@ -34,16 +27,18 @@ const error = new Jquery(".error");
 
 const more = new Jquery(".more");
 let limit = 5;
-import axios from "axios";
+// import axios from "axios";
 
 const searchArtist = (artist) => {
-  const data = axios.get(
-    `https://itunes.apple.com/search?term=${artist}&media=music&entity=album&attribute=artistTerm&limit=200`
-  );
-  data.then((res) => {
-    let sendData = res.data.results.slice(limit - 5, limit);
+  //   const data = axios.get(
+  //     `https://itunes.apple.com/search?term=${artist}&media=music&entity=album&attribute=artistTerm&limit=200`
+  //   );
 
-    h3.html(`${res.data.results.length} results for "${searched}"`);
+  const data = new Jquery(".searchArtist");
+  data.ajax(artist).then((res) => {
+    let sendData = res.results.slice(limit - 5, limit);
+
+    h3.html(`${res.results.length} results for "${searched}"`);
     get20(sendData);
   });
 };
