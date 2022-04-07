@@ -18,6 +18,27 @@ class Jquery {
   }
 }
 //////////////////////////////////////////////////////
+
+function pquery(selector) {
+  const element = document.querySelector(selector);
+
+  return {
+    on: function (type, cb) {
+      element.addEventListener(type, cb);
+    },
+    value: function () {
+      return element.value;
+    },
+    html: function (val) {
+      element.innerHTML = val;
+    },
+    ajax: function (url) {
+      return fetch(url).then((res) => res.json());
+    },
+  };
+}
+
+//////////////
 const search = new Jquery(".searchArtist");
 const searchButton = new Jquery(".search-button");
 const sectionList = document.querySelector(".section-list");
